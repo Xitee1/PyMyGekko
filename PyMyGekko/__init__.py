@@ -15,10 +15,18 @@ from PyMyGekko.resources.Blinds import Blind
 from PyMyGekko.resources.Blinds import BlindValueAccessor
 from PyMyGekko.resources.Cams import Cam
 from PyMyGekko.resources.Cams import CamValueAccessor
+from PyMyGekko.resources.Clocks import Clock
+from PyMyGekko.resources.Clocks import ClockValueAccessor
 from PyMyGekko.resources.DoorInterComs import DoorInterCom
 from PyMyGekko.resources.DoorInterComs import DoorInterComValueAccessor
+from PyMyGekko.resources.EMobils import EMobil
+from PyMyGekko.resources.EMobils import EMobilValueAccessor
 from PyMyGekko.resources.EnergyCosts import EnergyCost
 from PyMyGekko.resources.EnergyCosts import EnergyCostValueAccessor
+from PyMyGekko.resources.EnergyManagers import EnergyManager
+from PyMyGekko.resources.EnergyManagers import EnergyManagerValueAccessor
+from PyMyGekko.resources.HeatingCircuits import HeatingCircuit
+from PyMyGekko.resources.HeatingCircuits import HeatingCircuitValueAccessor
 from PyMyGekko.resources.HotWaterSystems import HotWaterSystem
 from PyMyGekko.resources.HotWaterSystems import HotWaterSystemValueAccessor
 from PyMyGekko.resources.Lights import Light
@@ -74,10 +82,18 @@ class MyGekkoApiClientBase:
         )
         self._blind_value_accessor = BlindValueAccessor(self._data_provider)
         self._cam_value_accessor = CamValueAccessor(self._data_provider)
+        self._clock_value_accessor = ClockValueAccessor(self._data_provider)
         self._door_inter_com_value_accessor = DoorInterComValueAccessor(
             self._data_provider
         )
+        self._emobil_value_accessor = EMobilValueAccessor(self._data_provider)
         self._energy_costs_value_accessor = EnergyCostValueAccessor(self._data_provider)
+        self._energy_manager_value_accessor = EnergyManagerValueAccessor(
+            self._data_provider
+        )
+        self._heating_circuits_value_accessor = HeatingCircuitValueAccessor(
+            self._data_provider
+        )
         self._hot_water_systems_value_accessor = HotWaterSystemValueAccessor(
             self._data_provider
         )
@@ -131,13 +147,29 @@ class MyGekkoApiClientBase:
         """Returns the MyGekko cams"""
         return self._cam_value_accessor.cams
 
+    def get_clocks(self) -> list[Clock]:
+        """Returns the MyGekko clocks"""
+        return self._clock_value_accessor.clocks
+
     def get_door_inter_coms(self) -> list[DoorInterCom]:
         """Returns the MyGekko door inter coms"""
         return self._door_inter_com_value_accessor.door_inter_coms
 
+    def get_emobils(self) -> list[EMobil]:
+        """Returns the MyGekko emobils (charging stations)"""
+        return self._emobil_value_accessor.emobils
+
     def get_energy_costs(self) -> list[EnergyCost]:
         """Returns the MyGekko energy_costs"""
         return self._energy_costs_value_accessor.energy_costs
+
+    def get_energy_managers(self) -> list[EnergyManager]:
+        """Returns the MyGekko energy_managers"""
+        return self._energy_manager_value_accessor.energy_managers
+
+    def get_heating_circuits(self) -> list[HeatingCircuit]:
+        """Returns the MyGekko heating_circuits"""
+        return self._heating_circuits_value_accessor.heating_circuits
 
     def get_hot_water_systems(self) -> list[HotWaterSystem]:
         """Returns the MyGekko hot_water_systems"""
