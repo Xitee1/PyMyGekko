@@ -1,0 +1,30 @@
+{
+  "globals": {
+    "network": {
+      "gekkoname": {
+        "value": "Test",
+        "type": "STRING",
+        "permission": "READ",
+        "index": 1
+      },
+      "version": {
+        "value": "1",
+        "type": "AO",
+        "permission": "READ",
+        "index": 3
+      },
+      "hardware": {
+        "value": "GEKKO",
+        "type": "STRING",
+        "permission": "READ",
+        "index": 4
+      }
+    }
+  },
+  "energymanager": {
+    "item0": {
+      "name": "Energy by MOBEX",
+      "page": "-"
+    }
+  }
+}
